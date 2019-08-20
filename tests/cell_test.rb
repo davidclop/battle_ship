@@ -18,4 +18,18 @@ class TestCell < Minitest::Test
     assert_equal "A1", @cell.coordinate
   end
 
+  def test_if_ship_returns_nil
+    assert_nil @cell.ship
+  end
+
+  def test_for_empty
+    assert_equal true, @cell.empty?
+    @cell.place_ship(@ship)
+    assert_equal false, @cell.empty?
+  end
+
+  def test_for_ship
+    @cell.place_ship(@ship)
+    assert_equal @ship, @cell.ship
+  end
 end
